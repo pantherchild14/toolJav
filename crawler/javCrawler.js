@@ -17,6 +17,7 @@ module.exports = {
             const javList = {
                 VideoJacketImage: [],
                 ID: [],
+                TITLE: [],
                 ReleaseDate: [],
                 Length: [],
                 Director: [],
@@ -37,6 +38,11 @@ module.exports = {
             const idElement = $('#video_id .text');
             const videoId = idElement.text().trim();
             javList.ID.push(videoId);
+
+            //crawl Title
+            const titleElement = $('#video_title .text');
+            const videoTitle = titleElement.text().trim();
+            javList.TITLE.push(videoTitle);
 
             // crawl Date
             const dateElement = $('#video_date .text');

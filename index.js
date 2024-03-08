@@ -31,19 +31,14 @@ const server = http.createServer(app);
 
 // javlibraryCrawler();
 
-server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+
+Connection().then(async () => {
+    const server = http.createServer(app);
+
+    server.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+
+}).catch((err) => {
+    console.log("err", err);
 });
-
-// Connection().then(async () => {
-//     const server = http.createServer(app);
-
-//     await javlibraryCrawler();
-
-//     server.listen(PORT, () => {
-//         console.log(`Server is running on port ${PORT}`);
-//     });
-
-// }).catch((err) => {
-//     console.log("err", err);
-// });
