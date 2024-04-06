@@ -7,21 +7,22 @@ const router = express.Router();
 
 
 router.get('/jav', (req, res) => {
-    res.render("javaView", { title: 'hii' });
+    res.render("javaView", { status: 'Loading...', ID: 'Loading...', data: 'Loading...' });
 });
 
 router.post('/jav', async (req, res) => {
     try {
         const inputValue = req.body.inputValue;
-        const data = await javlibraryCrawler(inputValue);
-
-        res.redirect(`/jav/${data}`);
+        let data = await javlibraryCrawler(inputValue);
+        data = JSON.stringify(data);
+        res.render("javaView", { status: 'Success!', ID: inputValue, data: data });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-router.get('/jav/:ID', async (req, res) => {
+
+router.get('/api/:ID', async (req, res) => {
     try {
         const ID = req.params.ID;
 

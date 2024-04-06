@@ -7,7 +7,7 @@ const cookiePareser = require("cookie-parser");
 /* ---------------------------------------------------------------- */
 const javRouter = require("./routers/javRouter");
 const { javlibraryCrawler } = require("./crawler/javCrawler");
-const Connection = require("./configs/mysqlDb");
+// const Connection = require("./configs/mysqlDb");
 const uploadURLImageController = require("./controllers/uploadURLImageController");
 
 dotenv.config();
@@ -27,18 +27,21 @@ app.use(express.static('public'));
 app.use("/", javRouter);
 
 
-const server = http.createServer(app);
-
 // javlibraryCrawler();
 
+const server = http.createServer(app);
 
-Connection().then(async () => {
-    const server = http.createServer(app);
-
-    server.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-
-}).catch((err) => {
-    console.log("err", err);
+server.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
+
+// Connection().then(async () => {
+//     const server = http.createServer(app);
+
+//     server.listen(PORT, () => {
+//         console.log(`Server is running on port ${PORT}`);
+//     });
+
+// }).catch((err) => {
+//     console.log("err", err);
+// });

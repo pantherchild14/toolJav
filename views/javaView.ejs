@@ -12,8 +12,27 @@
         <input type="text" id="inputValue" name="inputValue" required>
         <button type="submit">Submit</button>
     </form>
-    <%= title %>
-        <!-- <img src="/images/h_139dotm014jp-1.jpg" alt="Ảnh Test"> -->
+    <div>
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <h3 style="margin: 0; font-size: 16px;">Status:</h3>
+            <span>
+                <%= status %>
+            </span>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <h3 style="margin: 0; font-size: 16px;">ID:</h3>
+            <span>
+                <%= ID %>
+            </span>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <h3 style="margin: 0; font-size: 16px;">Data:</h3>
+            <span>
+                <%= data %>
+            </span>
+        </div>
+    </div>
+    <!-- <img src="/images/h_139dotm014jp-1.jpg" alt="Ảnh Test"> -->
 </body>
 
 </html>

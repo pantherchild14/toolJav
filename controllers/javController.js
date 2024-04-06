@@ -19,7 +19,7 @@ module.exports = {
 
             const connection = await Connection();
 
-            const checkJavIDQuery = 'SELECT COUNT(*) AS count FROM library WHERE ID_JAV = ?';
+            const checkJavIDQuery = 'SELECT ID_JAV FROM library WHERE ID_JAV = ?';
             const checkJavIDParams = [DATA.ID[0]];
 
             const [matchIdCheckResult] = await connection.query(checkJavIDQuery, checkJavIDParams);
@@ -27,7 +27,7 @@ module.exports = {
             let updateQuery;
             let updateParams;
 
-            if (matchIdCheckResult.count > 0) {
+            if (matchIdCheckResult.length > 0) {
                 updateQuery = `
                     UPDATE library 
                     SET 
@@ -51,7 +51,7 @@ module.exports = {
                     DATA.Maker[0],
                     DATA.Label[0],
                     DATA.Genre.join(', '),
-                    DATA.Cast[0],
+                    DATA.Cast.join(', '),
                     dataUploadImage.join(', '),
                     DATA.ID[0],
                 ];
@@ -83,8 +83,9 @@ module.exports = {
                     DATA.Label[0],
                     DATA.Genre.join(', '),
                     DATA.Cast[0],
-                    dataUploadImage.join(', '),
+                    DATA.UploadFileImage.join(', '),
                 ];
+                // dataUploadImage.join(', '),
                 console.log('Insert Data');
             }
 
